@@ -18,8 +18,15 @@ curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
 //execute post
 $result = curl_exec($ch);
 echo $result;
+$json_data = json_decode($result, true); 
+
+if($json_data['status']=="success")
+{
+	
+	return true;
+}
 //close connection
-curl_close($ch);
+
 
 }
 ?>
