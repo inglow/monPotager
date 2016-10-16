@@ -1,0 +1,11 @@
+$uri = 'https://demo.rocket.chat/api/publicRooms';
+$ch3 = curl_init($uri);
+curl_setopt_array($ch, array(
+    CURLOPT_HTTPHEADER  => array('X-User: admin', 'X-Authorization: 123456'),
+    CURLOPT_RETURNTRANSFER  =>true,
+    CURLOPT_VERBOSE     => 1
+));
+$out = curl_exec($ch3);
+curl_close($ch3);
+// echo response output
+echo $out;
