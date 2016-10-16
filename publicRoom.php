@@ -3,7 +3,8 @@
 require_once("mesFonctions.php");
 
 			$result=getRoom();
-			echo $result
+			echo $result;
 			$json_data = json_decode(getRoom(), true); 
+			var_dump($json_data);
 		
  ?>
