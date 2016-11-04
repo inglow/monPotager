@@ -1,0 +1,22 @@
+curl -H "X-Auth-Token: FxqpR635DQqEYYooWZNo56ewSzKWnXgvwCFELnhm-S0" \
+     -H "X-User-Id: XkQBeGBGrizXpP6J6" \
+     https://demo.rocket.chat//api/publicRooms
+   
+
+
+curl -H "X-Auth-Token: gfieDD_W0_62840pNS5FNF6fpVJwzSPscPjn-WyJ1HN" \
+     -H "X-User-Id: XkQBeGBGrizXpP6J6" \
+     https://demo.rocket.chat/api/rooms/QafxAzGWputWuK9Zw/join \
+     -d "{}"
+     curl -H "X-Auth-Token: gfieDD_W0_62840pNS5FNF6fpVJwzSPscPjn-WyJ1HN" \
+     -H "X-User-Id: XkQBeGBGrizXpP6J6" \
+https://demo.rocket.chat/api/rooms/QafxAzGWputWuK9Zw/messages
+
+
+
+curl -H "X-Auth-Token: gfieDD_W0_62840pNS5FNF6fpVJwzSPscPjn-WyJ1HN" \
+     -H "Content-Type: application/json" \
+     -X POST \
+     -H "X-User-Id: XkQBeGBGrizXpP6J6" \
+        https://demo.rocket.chat/api/rooms/QafxAzGWputWuK9Zw/send \
+     -d "{ \"msg\" : \"OK\" }"
