@@ -1,4 +1,6 @@
 <?php
+session_start(); 
+
 	function commentrelierlapi($user, $password)
 	{
 				$data = array("user" => "$user", "password" => "$password");
@@ -29,9 +31,10 @@
 
 				if($json_data['status']=="success")
 					{
-	
+							$_SESSION["authToken"]=$json_data['data']['authToken'];
+							$_SESSION["userId"]=$json_data['data']['userId']; 
 						echo "Connexion reussie";
-						header ("Location:publicRoom?authToken=".$json_data['data']['authToken']."&userId=".$json_data['data']['userId']); 
+						header ("Location:monpotager.fr/1"); 
 					}
 					else
 					{
@@ -44,7 +47,7 @@
 		$uri = 'https://demo.rocket.chat/api/publicRooms';
 		$ch = curl_init($uri);
 		curl_setopt_array($ch, array(
-	    CURLOPT_HTTPHEADER  => array('X-Auth-Token:'.$_GET['authToken'], "X-User-Id:".$_GET['userId']),
+	    CURLOPT_HTTPHEADER  => array('X-Auth-Token:'.$_SESSION['authToken'], "X-User-Id:".$_SESSION['userId']),
 	    CURLOPT_RETURNTRANSFER  =>true,
 	    CURLOPT_VERBOSE     => 1
 		));
@@ -58,7 +61,7 @@
 		$uri = "https://demo.rocket.chat/api/rooms/".$id."/join";
 		$ch = curl_init($uri);
 		curl_setopt_array($ch, array(
-	    CURLOPT_HTTPHEADER  => array('X-Auth-Token:'.$_GET['authToken'], "X-User-Id:".$_GET['userId']),
+	    CURLOPT_HTTPHEADER  => array('X-Auth-Token:'.$_SESSION['authToken'], "X-User-Id:".$_SESSION['userId']),
 				curl_setopt($ch, CURLOPT_POSTFIELDS, "{}"),
 
 	    CURLOPT_RETURNTRANSFER  =>true,
@@ -74,7 +77,7 @@
 		$uri = "https://demo.rocket.chat/api/rooms/".$id."/messages";
 		$ch = curl_init($uri);
 		curl_setopt_array($ch, array(
-	    CURLOPT_HTTPHEADER  => array('X-Auth-Token:'.$_GET['authToken'], "X-User-Id:".$_GET['userId']),
+	    CURLOPT_HTTPHEADER  => array('X-Auth-Token:'.$_SESSION['authToken'], "X-User-Id:".$_SESSION['userId']),
 	    CURLOPT_RETURNTRANSFER  =>true,
 	    CURLOPT_VERBOSE     => 1
 		));

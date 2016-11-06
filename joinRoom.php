@@ -33,7 +33,6 @@ if(isset($_POST['envoyer']))
 {
 $msg=$_POST['msg'];
 sendMessage($msg,$id);
-
 ?>
  <?php
 }
