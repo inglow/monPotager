@@ -8,9 +8,13 @@ RewriteEngine on
 # Règles de réécriture d'URL :
 #--------------------------------------------------
 
-# Article sans numéro de page :
+
 RewriteRule ^monpotager.fr$   index.php [L]
 
-# Article avec numéro de page :
+
 RewriteRule ^monpotager.fr/1$   publicRoom.php [L]
+
+
+RewriteRule ^monpotager.fr/2$   joinRoom.php [L]
+
 

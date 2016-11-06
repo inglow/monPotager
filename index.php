@@ -6,15 +6,13 @@
 </form>
 <?php
 
-
 require_once("mesFonctions.php");
+
 if(isset($_POST['connexion']))
 {
-$user=$_POST['user'];
-$password=$_POST['password'];
-
-connexion($user, $password);
-
+	$user=$_POST['user'];
+	$password=$_POST['password'];
+	connexion($user, $password);
 }
 
 ?>

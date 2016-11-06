@@ -11,16 +11,26 @@ require_once("mesFonctions.php");
 <tr><td>ID du channel</td><td>Nom du channel</td><td>Rejoidre le channel</td></tr>
 
 			<?php
-			foreach ($json_data['rooms'] as $var) {
+			foreach ($json_data['rooms'] as $var) 
+			{
 				echo "<tr>";
-echo "<td>".$var['_id']."</td>";
-echo "<td>".$var['name']."</td>";
-echo "<td><a href=\"/~inglow/monPotager/joinRoom.php?id=".$var['_id']."\">Rejoindre</a></td>";
+				echo "<td>".$var['_id']."</td>";
+				echo "<td>".$var['name']."</td>";
+					?>
+					<td>
+					<form action="" method="post">
+					<input type="hidden" name="id" value="<?php echo $var['_id'] ?>" />
+				    <input type="submit" name="rejoindre" value="rejoindre" />
+					</form>
+					</td>
+					<?php
 
-	
-
-
-
-echo "</tr>";			}
+				echo "</tr>";	
+					if(isset($_POST['rejoindre']))
+					{
+						$_SESSION["idc"]=$_POST['id'];
+						header ("Location:/~inglow/monPotager/monpotager.fr/2"); 
+					}		
+}
  ?>
  </table>
