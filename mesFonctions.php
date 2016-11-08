@@ -38,7 +38,7 @@ session_start();
 					}
 					else
 					{
-						echo "Erreur de mot de passe";
+						echo "Erreur de mot de passe ou d'identifiant";
 					}
 
 	}
@@ -53,6 +53,23 @@ session_start();
 		));
 			$out = curl_exec($ch);
 		curl_close($ch);
+
+		return $out;
+	}
+		function leftRoom($id)
+	{
+		$uri = "https://demo.rocket.chat/api/rooms/".$id."/leave";
+		$ch = curl_init($uri);
+		curl_setopt_array($ch, array(
+	    CURLOPT_HTTPHEADER  => array('X-Auth-Token:'.$_SESSION['authToken'], "X-User-Id:".$_SESSION['userId']),
+				curl_setopt($ch, CURLOPT_POSTFIELDS, "{}"),
+
+	    CURLOPT_RETURNTRANSFER  =>true,
+	    CURLOPT_VERBOSE     => 1
+		));
+			$out = curl_exec($ch);
+		curl_close($ch);
+					
 
 		return $out;
 	}
@@ -97,7 +114,7 @@ session_start();
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 				curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 				    'Content-Type: application/json',
-				    'X-Auth-Token:'.$_GET['authToken'], "X-User-Id:".$_GET['userId'],
+				    'X-Auth-Token:'.$_SESSION['authToken'], "X-User-Id:".$_SESSION['userId'],
 				    'Content-Length: ' . strlen($data_string),
 				    
 				    )
